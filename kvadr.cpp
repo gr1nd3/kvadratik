@@ -5,6 +5,8 @@
 {
 setlocale (LC_ALL, "Rus");
 
+const double DISK = 0.0001;
+
 double a = 0, b = 0, c = 0, d = 0, x1 = 0, x2 = 0;
 int prod = 1, chikl = 0, pustm = 0;
 
@@ -27,7 +29,7 @@ d = b * b - 4 * a * c;                     // это кусок, обрабатываемый этим сам
         pustm = 0;
     }
 
-    if (fabs(d) < 0.0001 )
+    if (fabs(d) < DISK )
     {
         x1 = -b / (2 * a);
         pustm = 1;
