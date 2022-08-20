@@ -1,60 +1,101 @@
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
-    int main()
+
+
+
+
+void input_koef (double *k_a, double *k_b, double *k_c)
 {
-setlocale (LC_ALL, "Rus");
-
-const double DISK = 0.0001;
-char ch;
-double a = 0, b = 0, c = 0, d = 0, x1 = 0, x2 = 0;
-int pustm = 0;
-
-printf("Введите коэффициенты квадратного уравнения. \n");
+printf("Enter the coefficients of the quadratic equation. \n");
 
 
 
-while (scanf("%lf %lf %lf", &a, &b, &c) != 3)
+while (scanf("%lf %lf %lf", &k_a, &k_b, &k_c) != 3)
     {
 while (getchar() != '\n'){}
 
-    printf("Введенные данные некоректны. Повторите ввод. \n");
+    printf("The entered data is incorrect. Try again. \n");
 
     }
- //тут данные должны как-то отправиться в другой файл, на выходе которого мы получим x1, x2 и pustm - переменную, определяющую количество корней
 
-d = b * b - 4 * a * c;                     // это кусок, обрабатываемый этим самым файлом
+}
+
+void lin_ur (double b, double c)
+{
+  if (b == 0)
+  {
+   printf ("No solutions");
+  }
+  else if (b == 0 && c == 0)
+  {
+   printf ("Infinity solutions");
+  }
+  else
+  {
+   printf ("The solution is: %.2f", -c / b);
+  }
+
+}
+
+void kvadr_ur (double a, double b, double c)
+{
+
+double d;
+
+const double DISK = 0.0001;
+
+
+d = b * b - 4 * a * c;
 
     if (d < 0)
     {
-        pustm = 0;
+     printf ("No solutions");
     }
 
-    if (fabs(d) < DISK )
+    if (fabs(d) < DISK)
     {
-        x1 = -b / (2 * a);
-        pustm = 1;
+        printf ("The solution is: %.2f", -b / (2 * a));
     }
 
     if (d > 0)
     {
-        x1 = (-b + sqrt(d)) / (2 * a);
-        x2 = (-b - sqrt(d)) / (2 * a);
-        pustm = 2;
+        printf ("The solutions are: %.2f, %.2f", (-b - sqrt(d)) / (2 * a), (-b + sqrt(d)) / (2 * a));
     }
 
+}
 
- //ну типо мы их получили и....
 
 
-if (pustm == 0)
-printf ("Уравнение не имеет рациональных решений");
 
-if (pustm == 1)
-printf ("Уравнение имеет одно рациональное решение - x1 = %.2f", x1);
 
-if (pustm == 2)
-printf ("Уравнение имеет два рациональных решения - x1 = %.2f, x2 = %.2f", x1, x2);
+
+
+
+
+
+
+
+
+
+
+
+    int main()
+{
+
+
+double a = 0, b = 0, c = 0;
+
+
+input_koef (&a, &b, &c);
+
+     if (a == 0)
+     lin_ur (b, c);
+
+
+     else
+     kvadr_ur (a, b, c);
+
 
 return 0;
 }
