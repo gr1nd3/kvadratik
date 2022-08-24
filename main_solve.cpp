@@ -1,12 +1,7 @@
-#include <stdio.h>
-#include <locale.h>
-#include <math.h>
 
 #include "core.cpp"
+#include "header.h"
 
-void input_koef (double *k_a, double *k_b, double *k_c);
-void lin_ur (double b, double c);
-void kvadr_ur (double a, double b, double c);
 
     int main()
 {

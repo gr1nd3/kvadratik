@@ -2,9 +2,7 @@
 #define CORE_CPP
 
 
-#include <stdio.h>
-#include <locale.h>
-#include <math.h>
+#include "header.h"
 
 
 
@@ -25,13 +23,13 @@ while (getchar() != '\n'){}
 
 }
 
-void lin_ur (double b, double c)
+double lin_ur (double b, double c)
 {
-  if (b == 0)
+  if (b == 0 && c != 0)
   {
    printf ("No solutions");
   }
-  else if (b == 0 && c == 0)
+  else if (b == 0 &&  c == 0)
   {
    printf ("Infinity solutions");
   }
@@ -42,7 +40,7 @@ void lin_ur (double b, double c)
 
 }
 
-void kvadr_ur (double a, double b, double c)
+double kvadr_ur (double a, double b, double c)
 {
 
 double d;
@@ -54,7 +52,7 @@ d = b * b - 4 * a * c;
 
     if (d < 0)
     {
-     printf ("No solutions");
+     printf ("No solutions kek");
     }
 
     if (fabs(d) < DISK)
