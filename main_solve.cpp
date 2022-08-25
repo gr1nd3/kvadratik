@@ -3,23 +3,32 @@
 #include "header.h"
 
 
-    int main()
+int main()
 {
+    enum Sol number_of_roots = NO_SOLUTION;
+    enum Comp moreless = EQUAL;
 
-double a = 0, b = 0, c = 0;
-
-
-input_koef (&a, &b, &c);
-
-     if (a == 0)
-     lin_ur (b, c);
+    double a = 0; double b = 0;
+    double c = 0;
+    double x1; double x2;
 
 
-     else
-     kvadr_ur (a, b, c);
+    input_coefficient (&a, &b, &c);
+
+    if (compare_zero (a) == EQUAL)
+    {
+        linear_equation (b, c, &x1, &number_of_roots);
+    }
 
 
-return 0;
+    else
+    {
+        quadratic_equation (a, b, c, &x1, &x2, &number_of_roots);
+    }
+
+    output_solutions (x1, x2, number_of_roots);
+
+    return 0;
 }
 
 
