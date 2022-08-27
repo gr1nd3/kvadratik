@@ -1,12 +1,13 @@
 
+#define TX_USE_SPEAK
+
 #include "header.h"
 #include "core.cpp"
 #include "test.cpp"
+#include "heroin.cpp"
 
 int main()
 {
-
-
     enum Sol number_of_roots = NO_SOLUTION;
     enum Comp moreless = EQUAL;
 
@@ -15,9 +16,13 @@ int main()
     double x1 = 0; double x2 = 0;
     int test_regular = 0;
 
+    printf ("Select the program operation mode \n"
+            " |0| - Test Program,\n"
+            " |1| - Regular program,\n"
+            " |2| - Heroine mode \n");
 
-    printf ("Select the program operation mode \n |0| - Test Program, |1| - Regular program \n");
     scanf ("%d", &test_regular);
+
     if (test_regular == 1)
     {
         input_coefficient (&a, &b, &c);
@@ -27,26 +32,29 @@ int main()
             linear_equation (b, c, &x1, &x2, &number_of_roots);
         }
 
-
         else
         {
             quadratic_equation (a, b, c, &x1, &x2, &number_of_roots);
         }
 
         output_solutions (x1, x2, number_of_roots);
-
     }
+
     else if (test_regular == 0)
     {
         test_file_scan ();
 
     }
 
-    else
+    else if (test_regular == 2)
     {
-    printf ("Unknown mode selected");
+        heroine ();
     }
 
+    else
+    {
+        printf ("Unknown mode selected");
+    }
     return 0;
 }
 

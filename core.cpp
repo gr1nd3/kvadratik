@@ -7,14 +7,11 @@
 #include "header.h"
 #include "test.cpp"
 
-
-
-
 enum Comp compare_zero (double x, double y)
 {
     const double HALFLING = 0.0001;
 
-    if (fabs (x) < y + HALFLING)
+    if (fabs (x - y) < HALFLING)
     {
         return EQUAL;
     }
@@ -29,24 +26,25 @@ enum Comp compare_zero (double x, double y)
         return MORE;
     }
 }
+
+//-----------------------------------------------------------------------------
+
 void input_coefficient (double* k_a, double* k_b, double* k_c)
 {
-    assert (k_a != NULL);
-    assert (k_b != NULL);
-    assert (k_c != NULL);
-
+    assert (k_a);
+    assert (k_b);
+    assert (k_c);
 
     printf ("Enter the coefficients of the quadratic equation. \n");
-
-
 
     while (scanf ("%lf %lf %lf", k_a, k_b, k_c) != 3)
     {
         while (getchar() != '\n');
         printf("The entered data is incorrect. Try again. \n");
     }
-
 }
+
+//-----------------------------------------------------------------------------
 
 void linear_equation (double b, double c, double* p_x1, double* p_x2, enum Sol* p_number_of_roots)
 {
@@ -82,6 +80,8 @@ void linear_equation (double b, double c, double* p_x1, double* p_x2, enum Sol* 
 
 }
 
+//-----------------------------------------------------------------------------
+
 void quadratic_equation (double a, double b, double c, double* p_x1, double* p_x2, enum Sol* p_number_of_roots)
 {
     double d = b * b - 4 * a * c;       // discriminant
@@ -99,9 +99,10 @@ void quadratic_equation (double a, double b, double c, double* p_x1, double* p_x
 
     if (compare_zero (d, 0) == MORE)
     {
+        d = sqrt (d);
         *p_number_of_roots = TWO_SOLUTION;
-        *p_x1 = (-b - sqrt(d)) / (2 * a);
-        *p_x2 = (-b + sqrt(d)) / (2 * a);
+        *p_x1 = (-b - d) / (2 * a);
+        *p_x2 = (-b + d) / (2 * a);
     }
 
 }
