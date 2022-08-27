@@ -15,7 +15,10 @@ void check_test (double s_x1,   double s_x2,   int num,
                                              && (compare_zero (s_x2_t, s_x2) == EQUAL))
     {
         (*counter)++;
-        printf ("TEST #%d: CHECKED \n", i);
+        printf ("TEST #%d: CHECKED \n"
+                "File values:    number of roots = %d, x1 = %.2lf, x2 = %.2lf \n"
+                "Program values: number of roots = %d, x1 = %.2lf, x2 = %.2lf \n \n",
+                 i, num, s_x1, s_x2, num_t, s_x1_t, s_x2_t);
     }
 
     else if ((compare_zero (num_t,  num)  == EQUAL)
@@ -23,13 +26,19 @@ void check_test (double s_x1,   double s_x2,   int num,
           && (compare_zero (s_x2_t, s_x1) == EQUAL))
     {
         (*counter)++;
-        printf ("TEST #%d: CHECKED \n", i);
+        printf ("TEST #%d: CHECKED \n"
+                "File values:    number of roots = %d, x1 = %.2lf, x2 = %.2lf \n"
+                "Program values: number of roots = %d, x1 = %.2lf, x2 = %.2lf \n \n",
+                 i, num, s_x1, s_x2, num_t, s_x1_t, s_x2_t);
     }
     else
     {
         (*counter)++;
         (*error_counter)++;
-        printf ("TEST #%d: ERROR \n", i);
+        printf ("TEST #%d: ERROR \n"
+                "File values:    number of roots = %d, x1 = %.2lf, x2 = %.2lf \n"
+                "Program values: number of roots = %d, x1 = %.2lf, x2 = %.2lf \n \n",
+                 i, num, s_x1, s_x2, num_t, s_x1_t, s_x2_t);
     }
 }
 
